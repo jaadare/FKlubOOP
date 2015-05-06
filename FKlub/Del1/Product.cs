@@ -19,10 +19,20 @@ namespace OOP_Eksamen
 
         }
 
+        public void NewProduct(int newProductID, string newProductName, int newPrice, int newProductActive, bool newCanBeBoughtOnCredit)
+        {
+            this.ProductID = newProductID;
+            this.Name = newProductName;
+            this.Price = newPrice;
+            this.Active = newProductActive;
+            this.CanBeBoughtOnCredit = newCanBeBoughtOnCredit;
+        }
+
+
         protected int _productid;
         protected string _name;
         protected int _price;
-        protected bool _active;
+        protected int _active;
         protected bool _boughtoncredit;
 
         public int ProductID
@@ -61,7 +71,7 @@ namespace OOP_Eksamen
             }
         }
 
-        public bool Active
+        public int Active
         {
             get
             {

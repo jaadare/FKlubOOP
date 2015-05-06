@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace OOP_Eksamen
 {
-    public class User
+    public class User :IComparable<User>
     {
         IStregsystem Stregsystem;
 
@@ -100,11 +101,20 @@ namespace OOP_Eksamen
             }
         }
 
-       public override string ToString(string n)
+       public int CompareTo(User other)
+       {
+           // If other is not a valid object reference, this instance is greater. 
+           if (other == null) return 1;
+           return UserID.CompareTo(other.UserID);
+       }
+       
+       public override string ToString()
        {
            
            return String.Format("Name:{0},{1}, Email:{2}",_firstname,_lastname,_email); 
        }
+
+
     }
     
 }
