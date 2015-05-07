@@ -16,36 +16,41 @@ namespace OOP_Eksamen
             Stregsystem = stregsystem;
         }
 
-        private int _productid;
-        private string _user;
-        private string _date;
-        private int _amount;
+        public Transaction()
+        {
 
-        public int ProductID
+        }
+
+        protected int _transactionid;
+        //private string _user;
+        protected DateTime _date;
+        protected int _amount;
+
+        public int TransactionID
         {
             get
             {
-                return _productid;
+                return _transactionid;
             }
             set
             {
-                _productid = value;
+                _transactionid = value;
             }
         }
 
-        public string User
-        {
-            get
-            {
-                return _user;
-            }
-            set 
-            {
-                _user = value;
-            }
-        }
+        //public string User
+        //{
+        //    get
+        //    {
+        //        return _user;
+        //    }
+        //    set 
+        //    {
+        //        _user = value;
+        //    }
+        //}
 
-        public string Date
+        public DateTime Date
         {
             get
             {
@@ -67,6 +72,14 @@ namespace OOP_Eksamen
             {
                 _amount = value;
             }
+        }
+
+        public override string ToString()
+        {
+            string s1 = Convert.ToString(TransactionID);
+            string s2 = Convert.ToString(Amount);
+            string s3 = Convert.ToString(Date);
+            return "Transaction ID:" + s1 + " Amount: " + s2 + " Date: " + s3;
         }
               
     }

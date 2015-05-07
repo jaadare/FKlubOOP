@@ -19,7 +19,7 @@ namespace OOP_Eksamen
 
         }
 
-        public void NewProduct(int newProductID, string newProductName, int newPrice, int newProductActive, bool newCanBeBoughtOnCredit)
+        public Product(int newProductID, string newProductName, int newPrice, int newProductActive, bool newCanBeBoughtOnCredit)
         {
             this.ProductID = newProductID;
             this.Name = newProductName;
@@ -93,7 +93,7 @@ namespace OOP_Eksamen
                 _boughtoncredit = value;
             }
         }
-
+       
         
     }
 }

@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Del1\BuyTransaction.cs" />
+    <Compile Include="Del1\InsertCash.cs" />
     <Compile Include="Del1\Stregsystem.cs" />
     <Compile Include="Del1\Transaction.cs" />
     <Compile Include="Del1\SeasonalProduct.cs" />

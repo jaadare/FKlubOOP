@@ -100,6 +100,10 @@ namespace OOP_Eksamen
                 _balance = value;
             }
         }
+       public User()
+       {
+
+       }
 
        public int CompareTo(User other)
        {
@@ -111,9 +115,10 @@ namespace OOP_Eksamen
        public override string ToString()
        {
            
-           return String.Format("Name:{0},{1}, Email:{2}",_firstname,_lastname,_email); 
+           return String.Format("Name:{0} {1}, Email: {2} ",_firstname,_lastname,_email); 
        }
-
+        
+        
 
     }
     
