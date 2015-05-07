@@ -14,6 +14,13 @@ namespace OOP_Eksamen
         {
             Stregsystem = stregsystem;
         }
+
+        public void execute(User user, int Amount)
+        {
+            user.Balance = user.Balance + Amount;
+
+
+        }
         
 
     }

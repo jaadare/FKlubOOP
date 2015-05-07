@@ -19,7 +19,10 @@ namespace OOP_Eksamen
 
         private List<User> _userlist = new List<User>();
         private List<Product> _productlist = new List<Product>();
+        private List<Product> _activeproducts = new List<Product>();
         private List<Transaction> _transactionlist = new List<Transaction>();
+        private List<Transaction> _usertransactions = new List<Transaction>();
+        
         
         public List<User>Userlist
         {
@@ -45,6 +48,18 @@ namespace OOP_Eksamen
             }
         }
 
+        public List<Product> ActvieProducts
+        {
+            get
+            {
+                return _activeproducts;
+            }
+            set
+            {
+                _activeproducts = value;
+            }
+        }
+
         public List<Transaction> Transactionlist
         {
             get
@@ -56,10 +71,25 @@ namespace OOP_Eksamen
                 _transactionlist = value;
             }
         }
+
+        public List<Transaction> UserTransactionlist
+        {
+            get
+            {
+                return _usertransactions;
+            }
+            set
+            {
+                _usertransactions = value;
+            }
+        }
+
+        
+
         
         public void readfileproducts()
         {
-            var reader = new StreamReader(File.OpenRead(@"C:\products.csv"));
+            var reader = new StreamReader(File.OpenRead(@"C:\products.csv"), Encoding.UTF8);
             while (!reader.EndOfStream)
             {
                 var line = reader.ReadLine();
@@ -98,13 +128,96 @@ namespace OOP_Eksamen
 
         public void BuyProduct(string username, int productid)
         {
-            var query1 = from user in Userlist
-                         where username == user.UserName
-                         select user;
-            query1.
+            User user = getuser(username);
+            Product product = getproduct(productid);
+
+            BuyTransaction.execute(user, product);  
+            
+            
+            
+        }
+
+        public void AddCreditToAccount(string username, int amount)
+        {
+            User user = getuser(username);
+
+            InsertCash.execute(user, amount);
 
         }
-        
 
+        public void ExecuteTransaction(Transaction transaction)
+        {
+
+        }
+
+        public Product getproduct(int productid)
+        {
+            var query = from products in Productlist
+                        where products.ProductID == productid
+                        select products;
+            Product product = query.FirstOrDefault();
+            if (product == null)
+            {
+                Console.WriteLine("no product with ID: " + productid);
+            }
+                Console.WriteLine("{0}   {1}   {2}   {3}   {4}", product.ProductID, product.Name, product.Price, product.Active, product.CanBeBoughtOnCredit);
+            
+           
+            return product;
+        }
+
+        public User getuser(string username)
+        {
+            var query =  from users in Userlist
+                         where users.UserName == username
+                         select users;
+
+            User user = query.FirstOrDefault();
+                if(user == null)
+                {
+                    Console.WriteLine("no good");
+                }
+                else     
+            Console.WriteLine("{0}{1}{2}{3}{4}",user.UserID,user.UserName,user.FirstName,user.LastName,user.Balance); 
+            return user;
+                        
+            
+        }
+
+        public void gettransactionlist(string username,int numtransaction)
+        {
+            var query = from transactions in Transactionlist
+                        where transactions.Buyer.UserName == username
+                        orderby transactions.Date ascending
+                        select transactions;
+
+            List<Transaction> temp = query.ToList();
+            if (temp.Count == null)
+            {
+                
+            }
+
+            else if (numtransaction > temp.Count)
+            {
+                for (int i = 0; i <= temp.Count; i++)
+                {
+                    UserTransactionlist.Add(temp[i]);
+                }
+            }
+            for (int i = 0; i <= numtransaction; i++)
+            {
+                
+            }
+
+           
+        }
+
+        public void getactiveproducts()
+        {
+            var query = from products in Productlist
+                        where products.Active == 1
+                        select products;
+            ActvieProducts = query.ToList();
+        }
     }
 }

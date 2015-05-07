@@ -22,8 +22,16 @@ namespace OOP_Eksamen
             foreach (var T in test.Userlist)
 	        {
 		        Console.WriteLine(T.ToString());
+            }
+            test.getactiveproducts();
+
+            foreach (var product in test.ActvieProducts)
+            {
+                Console.WriteLine("{0}   {1}   {2}   {3}   {4}",product.ProductID,product.Name,product.Price,product.Active,product.CanBeBoughtOnCredit);
                 
-	}
+            }
+            test.getuser("Jaadare88");
+            test.getproduct(1);
 
                          
             Console.ReadKey();

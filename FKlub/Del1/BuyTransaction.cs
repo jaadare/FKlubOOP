@@ -14,7 +14,22 @@ namespace OOP_Eksamen
         {
             Stregsystem = stregsystem;
         }
-        
+
+        public void execute(User buyer ,Product purchase )
+        {
+            if (buyer.Balance - purchase.Price < 0 && purchase.CanBeBoughtOnCredit == false)
+            {
+                Console.WriteLine("no good");
+            }
+            else
+            
+                buyer.Balance = buyer.Balance - purchase.Price;
+                
+                
+                
+            
+           
+        }
 
         public override string ToString()
         {

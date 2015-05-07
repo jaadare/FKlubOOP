@@ -22,7 +22,7 @@ namespace OOP_Eksamen
         }
 
         protected int _transactionid;
-        //private string _user;
+        protected User _user;
         protected DateTime _date;
         protected int _amount;
 
@@ -38,17 +38,17 @@ namespace OOP_Eksamen
             }
         }
 
-        //public string User
-        //{
-        //    get
-        //    {
-        //        return _user;
-        //    }
-        //    set 
-        //    {
-        //        _user = value;
-        //    }
-        //}
+        public User Buyer
+        {
+            get
+            {
+                return _user;
+            }
+            set
+            {
+                _user = value;
+            }
+        }
 
         public DateTime Date
         {
@@ -81,6 +81,7 @@ namespace OOP_Eksamen
             string s3 = Convert.ToString(Date);
             return "Transaction ID:" + s1 + " Amount: " + s2 + " Date: " + s3;
         }
+        
               
     }
 
