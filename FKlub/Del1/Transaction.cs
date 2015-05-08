@@ -25,6 +25,7 @@ namespace OOP_Eksamen
         protected User _user;
         protected DateTime _date;
         protected int _amount;
+        
 
         public int TransactionID
         {
@@ -80,6 +81,16 @@ namespace OOP_Eksamen
             string s2 = Convert.ToString(Amount);
             string s3 = Convert.ToString(Date);
             return "Transaction ID:" + s1 + " Amount: " + s2 + " Date: " + s3;
+        }
+        public void execute(Transaction transaction, Product product, User user)
+        {
+                        
+            BuyTransaction buytrans = new BuyTransaction();
+            buytrans.execute(buytrans, user, product);   
+        }
+        public void execute(User user, int amount)
+        {
+
         }
         
               

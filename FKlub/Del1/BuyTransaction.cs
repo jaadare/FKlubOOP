@@ -8,14 +8,9 @@ namespace OOP_Eksamen
 {
     public class BuyTransaction:Transaction
     {
-         IStregsystem Stregsystem;
+         
 
-        public BuyTransaction (IStregsystem stregsystem)
-        {
-            Stregsystem = stregsystem;
-        }
-
-        public void execute(User buyer ,Product purchase )
+        public void execute(BuyTransaction buytrans, User buyer ,Product purchase )
         {
             if (buyer.Balance - purchase.Price < 0 && purchase.CanBeBoughtOnCredit == false)
             {
@@ -37,7 +32,7 @@ namespace OOP_Eksamen
             string s2 = Convert.ToString(Date);
             string s3 = Convert.ToString(TransactionID);
 
-            return "A buy has been made by: " + Stregsystem.User.UserName + " Total Amount is: " + s1 + " bought on " + s2 + " With Transaction ID: " + s3;
+            return "A buy has been made by: " + Buyer.UserName + " Total Amount is: " + s1 + " bought on " + s2 + " With Transaction ID: " + s3;
         }
     }
 }

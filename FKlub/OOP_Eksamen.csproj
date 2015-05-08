@@ -48,6 +48,7 @@
     <Compile Include="Del1\SeasonalProduct.cs" />
     <Compile Include="Del1\Product.cs" />
     <Compile Include="Del1\User.cs" />
+    <Compile Include="Del2\StregsystemCLI.cs" />
     <Compile Include="program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

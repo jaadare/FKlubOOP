@@ -10,12 +10,12 @@ namespace OOP_Eksamen
 {
     public class IStregsystem
     {
-        public Product Product;
-        public Transaction Transaction;
-        public User User;
-        public SeasonalProduct SeasonalProduct;
-        public BuyTransaction BuyTransaction;
-        public InsertCash InsertCash;
+        //public Product Product;
+        //public Transaction Transaction;
+        //public User User;
+        //public SeasonalProduct SeasonalProduct;
+        //public BuyTransaction BuyTransaction;
+        //public InsertCash InsertCash;
 
         private List<User> _userlist = new List<User>();
         private List<Product> _productlist = new List<Product>();
@@ -84,9 +84,6 @@ namespace OOP_Eksamen
             }
         }
 
-        
-
-        
         public void readfileproducts()
         {
             var reader = new StreamReader(File.OpenRead(@"C:\products.csv"), Encoding.UTF8);
@@ -131,21 +128,32 @@ namespace OOP_Eksamen
             User user = getuser(username);
             Product product = getproduct(productid);
 
-            BuyTransaction.execute(user, product);  
+            Transaction buy = new Transaction();
             
+
+
+            if (user.Balance - product.Price > 0)
+            {
+                ExecuteTransaction(buy,product,user);
+            }
             
-            
+                
         }
 
         public void AddCreditToAccount(string username, int amount)
         {
             User user = getuser(username);
 
-            InsertCash.execute(user, amount);
+            
 
         }
 
-        public void ExecuteTransaction(Transaction transaction)
+        public void ExecuteTransaction(Transaction trans, Product product, User user)
+        {
+            trans.execute(trans,product,user);
+        }
+
+        public void ExecuteTransaction(User user, int Amount)
         {
 
         }
@@ -156,13 +164,8 @@ namespace OOP_Eksamen
                         where products.ProductID == productid
                         select products;
             Product product = query.FirstOrDefault();
-            if (product == null)
-            {
-                Console.WriteLine("no product with ID: " + productid);
-            }
-                Console.WriteLine("{0}   {1}   {2}   {3}   {4}", product.ProductID, product.Name, product.Price, product.Active, product.CanBeBoughtOnCredit);
-            
-           
+          
+          
             return product;
         }
 
@@ -175,7 +178,7 @@ namespace OOP_Eksamen
             User user = query.FirstOrDefault();
                 if(user == null)
                 {
-                    Console.WriteLine("no good");
+                    
                 }
                 else     
             Console.WriteLine("{0}{1}{2}{3}{4}",user.UserID,user.UserName,user.FirstName,user.LastName,user.Balance); 

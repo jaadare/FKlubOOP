@@ -14,6 +14,7 @@ namespace OOP_Eksamen
         {
             Stregsystem = stregsystem;
         }
+
         private string _startdate;
         private string _enddate;
 
